@@ -1,11 +1,15 @@
-import { randomUUID } from 'crypto';
+import { Entity } from '../../core/entities/entity';
 
-export class Instructor {
-  public id: string;
-  public name: string;
+interface InstructorProps {
+  name: string;
+}
 
-  constructor(name: string, id?: string) {
-    this.id = id ?? randomUUID();
-    this.name = name;
+export class Instructor extends Entity<InstructorProps> {
+  constructor(props: InstructorProps, id?: string) {
+    super(props, id);
+  }
+
+  get name(): string {
+    return this.props.name;
   }
 }
