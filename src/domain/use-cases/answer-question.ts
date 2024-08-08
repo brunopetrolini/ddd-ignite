@@ -1,18 +1,18 @@
 import { Answer } from '../entities/answer';
 
-export namespace AnswerQuestionUseCase {
-  export interface Input {
-    instructorId: string;
-    questionId: string;
-    content: string;
-  }
-
-  export type Output = Answer;
+interface AnswerQuestionUseCaseInput {
+  instructorId: string;
+  questionId: string;
+  content: string;
 }
 
 export class AnswerQuestionUseCase {
-  public execute(input: AnswerQuestionUseCase.Input): AnswerQuestionUseCase.Output {
-    const answer = new Answer(input.content);
+  public execute({ instructorId, questionId, content }: AnswerQuestionUseCaseInput) {
+    const answer = new Answer({
+      content,
+      authorId: instructorId,
+      questionId,
+    });
     return answer;
   }
 }
