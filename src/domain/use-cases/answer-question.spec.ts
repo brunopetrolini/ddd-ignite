@@ -1,10 +1,16 @@
 import { expect, it } from 'vitest';
+import { Answer } from '../entities/answer';
+import { AnswersRepository } from '../repositories/answer-repository';
 import { AnswerQuestionUseCase } from './answer-question';
 
-it('should create an answer', () => {
-  const sut = new AnswerQuestionUseCase();
+const fakeAnswersRepository: AnswersRepository = {
+  create: async (answer: Answer) => Promise.resolve(),
+};
 
-  const answer = sut.execute({
+it('should create an answer', async () => {
+  const sut = new AnswerQuestionUseCase(fakeAnswersRepository);
+
+  const answer = await sut.execute({
     instructorId: 'instructor-id',
     questionId: 'question-id',
     content: 'New answer',
