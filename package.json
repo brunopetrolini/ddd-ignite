@@ -1,0 +1,11 @@
+{
+  "name": "ddd-ignite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Bruno Petrolini <brunopetrolini@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.1.0",
+    "typescript": "^5.5.4"
+  }
+}
