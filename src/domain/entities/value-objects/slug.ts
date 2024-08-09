@@ -12,7 +12,7 @@ export class Slug {
    *
    * @param text {string} The text to be converted to a slug.
    */
-  static createFromText(text: string): Slug {
+  static createFromText(text: string) {
     const slugText = text
       .normalize('NFKD')
       .toLowerCase()

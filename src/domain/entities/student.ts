@@ -1,11 +1,11 @@
 import { Entity } from '../../core/entities/entity';
 
-interface InstructorProps {
+interface StudentProps {
   name: string;
 }
 
-export class Instructor extends Entity<InstructorProps> {
-  constructor(props: InstructorProps, id?: string) {
+export class Student extends Entity<StudentProps> {
+  constructor(props: StudentProps, id?: string) {
     super(props, id);
   }
 

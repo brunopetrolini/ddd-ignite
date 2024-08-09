@@ -13,7 +13,7 @@ export class Question extends Entity<QuestionProps> {
     super(props, id);
   }
 
-  get title(): string {
+  get title() {
     return this.props.title;
   }
 
@@ -21,11 +21,11 @@ export class Question extends Entity<QuestionProps> {
     return this.props.slug;
   }
 
-  get content(): string {
+  get content() {
     return this.props.content;
   }
 
-  get authorId(): string {
+  get authorId() {
     return this.props.authorId;
   }
 }

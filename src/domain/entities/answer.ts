@@ -11,15 +11,15 @@ export class Answer extends Entity<AnswerProps> {
     super(props, id);
   }
 
-  get content(): string {
+  get content() {
     return this.props.content;
   }
 
-  get authorId(): string {
+  get authorId() {
     return this.props.authorId;
   }
 
-  get questionId(): string {
+  get questionId() {
     return this.props.questionId;
   }
 }
