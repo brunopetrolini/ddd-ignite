@@ -14,6 +14,7 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
+    "dayjs": "^1.11.12",
     "ulid": "^2.3.0"
   }
 }
