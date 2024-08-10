@@ -1,8 +1,8 @@
 export class Slug {
-  public value: string;
+  public value: string
 
   constructor(value: string) {
-    this.value = value;
+    this.value = value
   }
 
   /**
@@ -21,7 +21,7 @@ export class Slug {
       .replace(/[^\w-]+/g, '')
       .replace(/_/g, '-')
       .replace(/--+/g, '-')
-      .replace(/-$/g, '');
-    return new Slug(slugText);
+      .replace(/-$/g, '')
+    return new Slug(slugText)
   }
 }
