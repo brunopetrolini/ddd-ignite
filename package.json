@@ -7,13 +7,14 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint --ext .ts .",
-    "lint:fix": "eslint --ext .ts . --fix"
+    "lint": "eslint src --ext .ts .",
+    "lint:fix": "eslint src --ext .ts . --fix"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^22.1.0",
     "eslint": "^8.57.0",
+    "eslint-plugin-vitest-globals": "^1.5.0",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5",
     "vitest-tsconfig-paths": "^3.4.1"
