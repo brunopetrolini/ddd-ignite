@@ -1,5 +1,3 @@
-import { expect, it } from 'vitest';
-
 import { Answer } from '../entities/answer';
 import { AnswersRepository } from '../repositories/answer-repository';
 import { AnswerQuestionUseCase } from './answer-question';
