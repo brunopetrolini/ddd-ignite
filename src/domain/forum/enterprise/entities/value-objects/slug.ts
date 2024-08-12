@@ -1,7 +1,7 @@
 export class Slug {
   public value: string
 
-  constructor(value: string) {
+  private constructor(value: string) {
     this.value = value
   }
 
@@ -12,7 +12,7 @@ export class Slug {
    *
    * @param text {string} The text to be converted to a slug.
    */
-  static createFromText(text: string) {
+  public static createFromText(text: string) {
     const slugText = text
       .normalize('NFKD')
       .toLowerCase()

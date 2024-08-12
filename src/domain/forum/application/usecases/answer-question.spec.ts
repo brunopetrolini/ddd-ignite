@@ -9,15 +9,15 @@ describe('Answer Question [Use Case]', () => {
   beforeEach(() => {
     answersRepository = new InMemoryAnswersRepository()
     sut = new AnswerQuestionUseCase(answersRepository)
+  })
 
-    it('should create an answer', async () => {
-      const { answer } = await sut.execute({
-        instructorId: 'instructor-id',
-        questionId: 'question-id',
-        content: 'New answer',
-      })
-
-      expect(answer.content).toEqual('New answer')
+  it('should create an answer', async () => {
+    const { answer } = await sut.execute({
+      instructorId: 'instructor-id',
+      questionId: 'question-id',
+      content: 'New answer',
     })
+
+    expect(answer.content).toEqual('New answer')
   })
 })
