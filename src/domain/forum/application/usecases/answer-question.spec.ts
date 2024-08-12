@@ -10,7 +10,7 @@ const fakeAnswersRepository: AnswersRepository = {
 it('should create an answer', async () => {
   const sut = new AnswerQuestionUseCase(fakeAnswersRepository)
 
-  const answer = await sut.execute({
+  const { answer } = await sut.execute({
     instructorId: 'instructor-id',
     questionId: 'question-id',
     content: 'New answer',
