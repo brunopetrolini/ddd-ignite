@@ -73,7 +73,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   get slug() {
-    return this.props.slug
+    return this.props.slug.value
   }
 
   get createdAt() {

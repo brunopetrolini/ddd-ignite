@@ -9,9 +9,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   }
 
   public async findBySlug(slug: string): Promise<Question | null> {
-    const question = this.questions.find(
-      (question) => question.slug.value === slug,
-    )
+    const question = this.questions.find((question) => question.slug === slug)
 
     return question || null
   }
