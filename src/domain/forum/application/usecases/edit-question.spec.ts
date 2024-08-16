@@ -21,14 +21,14 @@ describe('Edit Question [Use Case]', () => {
 
     await questionsRepository.create(newQuestion)
 
-    const updatedQuestion = await sut.execute({
+    const { question } = await sut.execute({
       questionId: newQuestion.id.toString(),
       authorId: 'author-id-1',
       title: 'New title',
       content: 'New content',
     })
 
-    expect(updatedQuestion.question).toMatchObject({
+    expect(question).toMatchObject({
       title: 'New title',
       content: 'New content',
     })
