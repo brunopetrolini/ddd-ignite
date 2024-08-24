@@ -7,12 +7,15 @@ export interface QuestionCommentProps extends CommentProps {
 }
 
 export class QuestionComment extends Comment<QuestionCommentProps> {
-  public static create(
+  static create(
     props: Optional<QuestionCommentProps, 'createdAt'>,
     id?: UniqueEntityID,
-  ): QuestionComment {
+  ) {
     const questionComment = new QuestionComment(
-      { ...props, createdAt: props.createdAt ?? new Date() },
+      {
+        ...props,
+        createdAt: props.createdAt ?? new Date(),
+      },
       id,
     )
     return questionComment
