@@ -2,7 +2,7 @@ import { makeQuestionComment } from 'test/factories/make-question-comment'
 import { InMemoryQuestionCommentsRepository } from 'test/repositories/in-memory-question-comments-repository'
 import { DeleteQuestionCommentUseCase } from './delete-question-comment'
 
-describe('Delete Question [Use Case]', () => {
+describe('Delete Question Comment [Use Case]', () => {
   let questionCommentsRepository: InMemoryQuestionCommentsRepository
   let sut: DeleteQuestionCommentUseCase
 

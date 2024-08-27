@@ -14,7 +14,7 @@ export class InMemoryQuestionCommentsRepository
     const commentIndex = this.items.findIndex((item) => item.id === comment.id)
 
     if (commentIndex === -1) {
-      throw new Error('Question not found.')
+      throw new Error('Comment not found.')
     }
 
     this.items.splice(commentIndex, 1)
