@@ -9,7 +9,9 @@ interface CommentOnQuestionInput {
   content: string
 }
 
-type CommentOnQuestionOutput = void
+type CommentOnQuestionOutput = {
+  comment: QuestionComment
+}
 
 export class CommentOnQuestionUseCase {
   constructor(
@@ -35,5 +37,7 @@ export class CommentOnQuestionUseCase {
     })
 
     await this.questionCommentsRepository.create(comment)
+
+    return { comment }
   }
 }
