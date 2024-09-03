@@ -33,5 +33,4 @@ class Success<S, F> {
 export type Either<F, S> = Failure<F, S> | Success<S, F>
 
 export const failure = <F, S>(reason: F): Either<F, S> => new Failure(reason)
-export const success = <F, S = void>(result?: S): Either<F, S> =>
-  new Success(result as S)
+export const success = <F, S>(result: S): Either<F, S> => new Success(result)
