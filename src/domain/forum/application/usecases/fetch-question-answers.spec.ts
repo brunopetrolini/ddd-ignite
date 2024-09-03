@@ -20,12 +20,12 @@ describe('Fetch Question Answers [Use Case]', () => {
     )
     await Promise.all(answersPromises)
 
-    const { answers } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'question-id-1',
       page: 1,
     })
 
-    expect(answers).toEqual([
+    expect(result.value?.answers).toEqual([
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
@@ -40,17 +40,19 @@ describe('Fetch Question Answers [Use Case]', () => {
     )
     await Promise.all(answersPromises)
 
-    const { answers: answersPageOne } = await sut.execute({
+    const resultPageOne = await sut.execute({
       questionId: 'question-id-1',
       page: 1,
     })
-    const { answers: answersPageTwo } = await sut.execute({
+    const resultPageTwo = await sut.execute({
       questionId: 'question-id-1',
       page: 2,
     })
 
-    expect(answersPageOne).toHaveLength(20)
-    expect(answersPageTwo).toHaveLength(10)
-    expect(answersPageOne).not.toEqual(answersPageTwo)
+    expect(resultPageOne.value?.answers).toHaveLength(20)
+    expect(resultPageTwo.value?.answers).toHaveLength(10)
+    expect(resultPageOne.value?.answers).not.toEqual(
+      resultPageTwo.value?.answers,
+    )
   })
 })

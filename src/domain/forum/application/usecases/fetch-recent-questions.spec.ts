@@ -22,9 +22,9 @@ describe('Fetch Recent Questions [Use Case]', () => {
       makeQuestion({ createdAt: new Date('2024-08-17') }),
     )
 
-    const { questions } = await sut.execute({ page: 1 })
+    const result = await sut.execute({ page: 1 })
 
-    expect(questions).toEqual([
+    expect(result.value?.questions).toEqual([
       expect.objectContaining({ createdAt: new Date('2024-08-17') }),
       expect.objectContaining({ createdAt: new Date('2024-08-15') }),
       expect.objectContaining({ createdAt: new Date('2024-08-13') }),
@@ -37,11 +37,13 @@ describe('Fetch Recent Questions [Use Case]', () => {
     )
     await Promise.all(questionsPromises)
 
-    const { questions: questionsPageOne } = await sut.execute({ page: 1 })
-    const { questions: questionsPageTwo } = await sut.execute({ page: 2 })
+    const resultPageOne = await sut.execute({ page: 1 })
+    const resultPageTwo = await sut.execute({ page: 2 })
 
-    expect(questionsPageOne).toHaveLength(20)
-    expect(questionsPageTwo).toHaveLength(10)
-    expect(questionsPageOne).not.toEqual(questionsPageTwo)
+    expect(resultPageOne.value?.questions).toHaveLength(20)
+    expect(resultPageTwo.value?.questions).toHaveLength(10)
+    expect(resultPageOne.value?.questions).not.toEqual(
+      resultPageTwo.value?.questions,
+    )
   })
 })

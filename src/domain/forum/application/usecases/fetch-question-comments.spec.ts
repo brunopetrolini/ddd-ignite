@@ -22,12 +22,12 @@ describe('Fetch Question Comments [Use Case]', () => {
     )
     await Promise.all(commentsPromises)
 
-    const { comments } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'question-id-1',
       page: 1,
     })
 
-    expect(comments).toEqual([
+    expect(result.value?.comments).toEqual([
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
       expect.objectContaining({ questionId: { value: 'question-id-1' } }),
@@ -44,17 +44,19 @@ describe('Fetch Question Comments [Use Case]', () => {
     )
     await Promise.all(commentsPromises)
 
-    const { comments: commentsPageOne } = await sut.execute({
+    const resultPageOne = await sut.execute({
       questionId: 'question-id-1',
       page: 1,
     })
-    const { comments: commentsPageTwo } = await sut.execute({
+    const resultPageTwo = await sut.execute({
       questionId: 'question-id-1',
       page: 2,
     })
 
-    expect(commentsPageOne).toHaveLength(20)
-    expect(commentsPageTwo).toHaveLength(10)
-    expect(commentsPageOne).not.toEqual(commentsPageTwo)
+    expect(resultPageOne.value?.comments).toHaveLength(20)
+    expect(resultPageTwo.value?.comments).toHaveLength(10)
+    expect(resultPageOne.value?.comments).not.toEqual(
+      resultPageTwo.value?.comments,
+    )
   })
 })

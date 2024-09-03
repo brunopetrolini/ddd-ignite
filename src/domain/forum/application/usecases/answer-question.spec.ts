@@ -1,9 +1,8 @@
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository'
-import { AnswersRepository } from '../repositories/answers-repository'
 import { AnswerQuestionUseCase } from './answer-question'
 
 describe('Answer Question [Use Case]', () => {
-  let answersRepository: AnswersRepository
+  let answersRepository: InMemoryAnswersRepository
   let sut: AnswerQuestionUseCase
 
   beforeEach(() => {
@@ -12,12 +11,13 @@ describe('Answer Question [Use Case]', () => {
   })
 
   it('should create an answer', async () => {
-    const { answer } = await sut.execute({
+    const result = await sut.execute({
       instructorId: 'instructor-id',
       questionId: 'question-id',
       content: 'New answer',
     })
 
-    expect(answer.content).toEqual('New answer')
+    expect(result.isSuccess()).toBe(true)
+    expect(answersRepository.answers[0]).toEqual(result.value?.answer)
   })
 })

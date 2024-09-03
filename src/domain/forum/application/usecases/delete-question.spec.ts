@@ -2,6 +2,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { makeQuestion } from 'test/factories/make-question'
 import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 import { DeleteQuestionUseCase } from './delete-question'
+import { NotAllowedError } from './errors/not-allowed'
 
 describe('Delete Question [Use Case]', () => {
   let questionsRepository: InMemoryQuestionsRepository
@@ -36,11 +37,12 @@ describe('Delete Question [Use Case]', () => {
 
     await questionsRepository.create(newQuestion)
 
-    const promise = sut.execute({
+    const result = await sut.execute({
       authorId: 'author-id-2',
       questionId: 'question-id-1',
     })
 
-    await expect(promise).rejects.toThrow(new Error('Not allowed.'))
+    expect(result.isFailure()).toBe(true)
+    expect(result.value).toBeInstanceOf(NotAllowedError)
   })
 })

@@ -20,8 +20,8 @@ describe('Get Question By Slug [Use Case]', () => {
 
     await questionsRepository.create(newQuestion)
 
-    const { question } = await sut.execute({ slug: 'example-question' })
+    const result = await sut.execute({ slug: 'example-question' })
 
-    expect(question.slug).toEqual('example-question')
+    expect(result.value?.question.slug).toEqual('example-question')
   })
 })
